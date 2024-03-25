@@ -8,6 +8,7 @@ import SearchIcon from '@assets/images/Search.svg';
 import FilterIcon from '@assets/images/filterIcon.svg';
 import styles from './Library.module.scss';
 import { CardComponentType } from '@components/Card/types';
+import { searchAddrById } from '@api/sc/search/search';
 
 import { searchAddrById } from "../../api/sc/search/search"
 import { useScNavigation } from '@hooks/useScNavigation';
@@ -121,11 +122,21 @@ const Library = () => {
       goToActiveFormatCommand(gitScAddr.value);
   }
 
+  const tmp = async () => {
+    const actionNode = await searchAddrById("cat_reusable_component_specification");
+    console.log(actionNode);
+
+    // if (scAddr){
+    //   const data =  await client.getLinkContents([scAddr]);
+    //   console.log(data);
+    // }
+  }
+
   useEffect(() => {
     setCards(mock_fetch(15));
     testFindGit();
   }, []);
-
+  
   useEffect(() => {
     const filtered = selectedFilters.length > 0 ? cards?.filter((card) => selectedFilters.includes(card.subtitle)) : cards;
     setFilteredCards(filtered);
