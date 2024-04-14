@@ -133,6 +133,7 @@ const Library = () => {
               placeholder={translate({ ru: 'Поиск компонент', en: 'Search for components' })}
               iconLeft={<SearchIcon />}
               onChange={handleSearchChange}
+              onClick={() => setIsFilterVisible(false)}
             />
             <div className={styles.Filter}>
               <button className={styles.FilterButton} onClick={toggleFilterVisibility}>
