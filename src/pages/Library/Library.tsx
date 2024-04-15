@@ -44,13 +44,8 @@ const Library = () => {
   }, [specifications]);
 
   const fetchSpecifiactions = async () => {
-    // const specifications = await findSpecifiactions();
-    // setSpecifications(specifications);
-
-    const components: ScAddr[] = [];
-    const testsScAddr = await searchAddrById('cat_reusable_component_specification');
-    if (testsScAddr) components.push(testsScAddr);
-    setSpecifications(components);
+    const specifications = await findSpecifiactions();
+    setSpecifications(specifications);
   };
 
   const fetchCards = async () => {
@@ -131,6 +126,10 @@ const Library = () => {
     if (isFilterVisible === true) setIsFilterVisible(false);
   };
 
+  const handleFilterFormClick = (event: React.MouseEvent<HTMLFormElement>) => {
+    event.stopPropagation();
+  };
+
   return (
     <>
       {showComponent && <CardInfo scAddr={showComponent} setShowComponent={setShowComponent} />}
@@ -148,7 +147,10 @@ const Library = () => {
                 <FilterIcon />
                 <label>{translate({ ru: 'Фильтр', en: 'Filter' })}</label>
               </button>
-              <form className={isFilterVisible ? styles.visible : ''}>
+              <form
+                className={isFilterVisible ? styles.visible : ''}
+                onClick={handleFilterFormClick}
+              >
                 <div className={styles.Option}>
                   <input
                     type="checkbox"
