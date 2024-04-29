@@ -88,15 +88,6 @@ const Library = () => {
     }
   };
 
-  const tmp = async () => {
-    const actionNode = await searchAddrById("cat_reusable_component_specification");
-    console.log(actionNode);
-
-    // if (scAddr){
-    //   const data =  await client.getLinkContents([scAddr]);
-    //   console.log(data);
-    // }
-  }
 
   useEffect(() => {
     const filtered =
